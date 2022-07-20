@@ -1,7 +1,9 @@
 import React,{useState} from "react";
+import {useHistory} from "react-router-dom"
 import M from "materialize-css"
 
 const Signup = () => {
+    const history = useHistory()
     const [name,setName] = useState("")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
@@ -13,9 +15,9 @@ const Signup = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                name:"",
-                email:"",
-                password:""
+                name,
+                email,
+                password
             })
         }).then(res => res.json()).then(data => {
             console.log(data);
@@ -26,6 +28,7 @@ const Signup = () => {
                 M.toast({html: data.error, classes: "#c62828 red darken-3"})
             } else {
                 M.toast({html: data.message, classes: "#43a047 green darken-1"})
+                history.push("/login")
             }
         })
     }

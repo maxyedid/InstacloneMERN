@@ -17,9 +17,9 @@ const Profile = () => {
             <div>
                 <h4>Max Yedid</h4>
                     <div style = {{display: "flex", justifyContent: "space-between", width: "108%"}}>
-                        <h6>40 posts</h6>
-                        <h6>40 followers</h6>
-                        <h6>40 following</h6>
+                        <h6>40 Posts</h6>
+                        <h6>40 Followers</h6>
+                        <h6>40 Following</h6>
                     </div>
                 </div>
             </div>

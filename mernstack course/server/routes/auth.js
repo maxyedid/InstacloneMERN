@@ -21,6 +21,10 @@ router.post('/signup', (req, res) => {
     if (!email || !name || !password) {
         return res.status(422).json({error: "Please fill out all fields: Name, Email, Password"})
     }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return res.status(422).json({error: "Email is invalid"})
+    }
     User.findOne({email: email}).then((savedUser) => {
         if (savedUser) {
             return res.status(422).json({error: "User already exists with that email"})

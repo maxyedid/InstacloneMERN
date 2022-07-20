@@ -16,6 +16,7 @@ router.get('/protected', requireLogin, (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
+    console.log("were in sign up")
     const {name, email, password} = req.body;
     if (!email || !name || !password) {
         return res.status(422).json({error: "Please fill out all fields: Name, Email, Password"})
@@ -34,7 +35,7 @@ router.post('/signup', (req, res) => {
         })
 
         user.save().then(user => {
-            res.json({message: "saved successfully"});
+            res.json({message: "Account created successfully"});
         }).catch(err => {
             console.log(err);
         })

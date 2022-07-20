@@ -11,8 +11,8 @@ const Home = () => {
                     />
                 </div>
                 <div className = "card-content">
-                <i class="material-icons" style = {{color: "red"}}>favorite</i>
-                    <h6>title</h6>
+                <i className ="material-icons" style = {{color: "red"}}>favorite</i>
+                    <h6>Upcoming Hit</h6>
                     <p>I feel like an astronaut in the ocean</p>
                     <input type = "text" placeholder = "Add a comment" />
                 </div>
@@ -25,8 +25,8 @@ const Home = () => {
                     />
                 </div>
                 <div className = "card-content">
-                <i class="material-icons" style = {{color: "red"}}>favorite</i>
-                    <h6>title</h6>
+                <i className ="material-icons" style = {{color: "red"}}>favorite</i>
+                    <h6>Upcoming Hit</h6>
                     <p>I feel like an astronaut in the ocean</p>
                     <input type = "text" placeholder = "Add a comment" />
                 </div>
@@ -39,8 +39,8 @@ const Home = () => {
                     />
                 </div>
                 <div className = "card-content">
-                <i class="material-icons" style = {{color: "red"}}>favorite</i>
-                    <h6>title</h6>
+                <i className ="material-icons" style = {{color: "red"}}>favorite</i>
+                    <h6>Upcoming Hit</h6>
                     <p>I feel like an astronaut in the ocean</p>
                     <input type = "text" placeholder = "Add a comment" />
                 </div>
@@ -53,8 +53,8 @@ const Home = () => {
                     />
                 </div>
                 <div className = "card-content">
-                <i class="material-icons" style = {{color: "red"}}>favorite</i>
-                    <h6>title</h6>
+                <i className ="material-icons" style = {{color: "red"}}>favorite</i>
+                    <h6>Upcoming Hit</h6>
                     <p>I feel like an astronaut in the ocean</p>
                     <input type = "text" placeholder = "Add a comment" />
                 </div>

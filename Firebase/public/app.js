@@ -32,4 +32,4 @@ auth.onAuthStateChanged(user => {
         whenSignedOut.hidden = false;
         userDetails.innerHTML = ' ';
     }
-});
+});    }

@@ -4,11 +4,11 @@ const NavBar = () => {
     return (
         <nav>
             <div className = "nav-wrapper">
-                <a href = "#" className = "brand-logo left">Logo</a>
+                <a href = "/" className = "brand-logo left">Home</a>
                 <ul id = "nav-mobile" className = "right hide-on-med-and-down">
-                    <li><a href = "sass.html">Login</a></li>
-                    <li><a href = "badges.html">Sign Up</a></li>
-                    <li><a href = "collapsible.html">Profile</a></li>
+                    <li><a href = "/login">Login</a></li>
+                    <li><a href = "/signin">Sign Up</a></li>
+                    <li><a href = "/profile">Profile</a></li>
                 </ul>
             </div>
         </nav>

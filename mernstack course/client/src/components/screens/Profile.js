@@ -2,7 +2,7 @@ import React from "react";
 
 const Profile = () => {
     return (
-        <div>
+        <div style = {{maxWidth: "1068px", margin:"0px auto"}}>
             <div style = {{
                 display: "flex",
                 justifyContent: "space-around",
@@ -22,6 +22,15 @@ const Profile = () => {
                         <h6>40 following</h6>
                     </div>
                 </div>
+            </div>
+
+            <div className = "gallery">
+                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
+                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
+                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
+                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
+                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
+                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
             </div>
         </div>
     )

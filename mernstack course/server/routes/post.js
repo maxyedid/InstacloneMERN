@@ -84,7 +84,7 @@ router.put('/comment', requiredLogin, (req, res) => {
         $push:{comments:comment}
     }, {
         new: true
-    }).populate("comments.postedBy", "_id name")
+    }).populate("postedBy", "_id name").populate("comments.postedBy", "_id name")
     .exec((err, result) => {
         if (err) {
             return res.status(422).json({error: err})

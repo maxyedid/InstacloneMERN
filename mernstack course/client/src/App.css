@@ -56,3 +56,7 @@ a {
 #navbar {
   background-color: lightgray !important;
 }
+
+.material-icons:hover{
+  cursor: pointer;
+}

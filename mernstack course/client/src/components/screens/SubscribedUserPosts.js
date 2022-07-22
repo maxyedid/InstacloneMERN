@@ -1,11 +1,12 @@
 import React, {useState, useEffect, useContext} from "react";
 import {UserContext} from '../../App'
 
-const Home = () => {
+const SubbedHome = () => {
     const [data, setData] = useState([])
     const {state} = useContext(UserContext)
     useEffect(() => {
-        fetch('http://localhost:4000/allposts', {
+        fetch('http://localhost:4000/getsubpost', {
+            method: "get",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("jwt")
             }
@@ -36,7 +37,6 @@ const Home = () => {
                 console.log(err)
             })
     }
-
     const unlikePost = (id) => {
         fetch("http://localhost:4000/unlike", {
             method: "put",
@@ -84,30 +84,13 @@ const Home = () => {
         })
     }
 
-    const deletePost = (postid) => {
-        fetch(`http://localhost:4000/deletepost/${postid}`, {
-            method: "delete",
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("jwt")
-            }
-        }).then(res => res.json()).then(result => {
-            const newData = data.filter(item => {
-                return item._id !== result._id
-            })
-            console.log(newData)
-        })
-    }
     return (
         <div key = "homepage" className = "home">
             {
                 data.map(item => {
                     return (
-                        <>
-                        {item.postedBy? 
                         <div className = "card home-card" key ={item._id}>
-                            <h5 style = {{padding: "5px"}}><a href = {item.postedBy._id !== state._id?`/profile/${item.postedBy._id}`: "/profile"}>{item.postedBy.name}</a>{item.postedBy._id === state._id && <i onClick = {() => deletePost(item._ID)}
-                            className = "material-icons" 
-                            style = {{float: "right"}}>delete</i>}</h5>
+                            <h5 style = {{padding: "5px"}}><a href = {item.postedBy._id !== state._id?`/profile/${item.postedBy._id}`: "/profile"}>{item.postedBy.name}</a></h5>
                             <div className = "card-image">
                                 <img src = {item.photo}
                                 alt = ""
@@ -135,8 +118,6 @@ const Home = () => {
                                 }
                             </div>
                         </div>
-                : "loading"}
-                        </>
                     )
                 })
             }
@@ -144,4 +125,4 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default SubbedHome;

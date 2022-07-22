@@ -14,11 +14,9 @@ const UserProfile = () => {
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
             }
         }).then(res => res.json()).then(result => {
-            if (state._id) {
             if (result.user.followers.includes(state._id)) {
                 setShowFollow(false)
             }
-        }
             setProfile(result)
         })
     },[state, userid])

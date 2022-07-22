@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 const CreatePost = () => {
 
     const history = useHistory();
-
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
     const [image, setImage] = useState("")
@@ -29,6 +28,7 @@ const CreatePost = () => {
             } else {
                 M.toast({html: "Created post successfully", classes: "#43a047 green darken-1"})
                 history.push("/")
+                window.location.reload()
             }
         })
     }

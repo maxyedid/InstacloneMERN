@@ -4,9 +4,9 @@ import { UserContext } from "../../App";
 
 const UserProfile = () => {
     const [userProfile, setProfile] = useState([])
-    const [showFollow, setShowFollow] = useState(true)
     const {userid} = useParams();
     const {state, dispatch} = useContext(UserContext)
+    const [showFollow, setShowFollow] = useState(true)
     useEffect(()=> {
         fetch(`http://localhost:4000/user/${userid}`, {
             method: "get",
@@ -14,7 +14,7 @@ const UserProfile = () => {
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
             }
         }).then(res => res.json()).then(result => {
-            if (result.user.followers.includes(state._id)) {
+            if (state && result.user.followers.includes(state._id)) {
                 setShowFollow(false)
             }
             setProfile(result)
@@ -82,7 +82,7 @@ const UserProfile = () => {
             }}>
                 <div>
                 <img style = {{width: "160px", height: "160px", borderRadius: "80px"}}
-                src = "https://media-exp2.licdn.com/dms/image/D4D03AQEzEKjDCSbRlQ/profile-displayphoto-shrink_800_800/0/1643615041664?e=1663804800&v=beta&t=hLZek1BO6-Lv3X73-d204iwvpL1p7l7UbpW5ySQtbcY"
+                src = {userProfile.user.pic}
                 alt = ""
                  /> </div>
             <div>

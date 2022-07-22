@@ -13,6 +13,15 @@ router.get('/allposts',  (req, res) => {
     })
 })
 
+router.get('/getsubpost', requiredLogin, (req, res) => {
+    Post.find({postedBy: {$in: req.user.following}}).populate("postedBy", "_id name email").populate("comments.postedBy", "_id name").then(data => {
+        res.json({posts: data})
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
+
 router.post('/createPost', requiredLogin, (req, res) => {
     const {title, body, pic} = req.body
     if (!title || !body || !pic) {

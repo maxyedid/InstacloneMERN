@@ -5,6 +5,19 @@ const requiredLogin = require('../middleware/requiredLogin')
 const Post = mongoose.model("Post")
 const User = mongoose.model("User")
 
+router.get("/user/myprofile", requiredLogin, (req, res) => {
+    User.findOne({_id: req.user._id}).select("-password").then(user => {
+        Post.find({postedBy: req.user._id}).populate("postedBy", "_id name").exec((err, posts) => {
+            if (err) {
+                return res.status(422).json({error: err})
+            }
+            res.json({user, posts})
+        })
+    }).catch(err => {
+        return res.status(404).json({error: "User not found"})
+    })
+})
+
 router.get('/user/:id', (req, res) => {
     User.findOne({_id: req.params.id}).select("-password").then(user => {
         Post.find({postedBy: req.params.id}).populate("postedBy", "_id name").exec((err, posts) => {
@@ -17,5 +30,7 @@ router.get('/user/:id', (req, res) => {
         return res.status(404).json({error: "User not found"})
     })
 })
+
+
 
 module.exports = router

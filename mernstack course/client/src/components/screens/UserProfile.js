@@ -1,19 +1,23 @@
 import React, {useEffect, useState} from "react";
+import {useParams} from 'react-router-dom'
 
-const Profile = () => {
-    const [myProfile, setProfile] = useState([])
+const UserProfile = () => {
+    const [userProfile, setProfile] = useState([])
+    const {userid} = useParams();
     useEffect(()=> {
-        fetch("http://localhost:4000/user/myprofile", {
+        fetch(`http://localhost:4000/user/${userid}`, {
             method: "get",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
             }
         }).then(res => res.json()).then(result => {
-            console.log(result)
             setProfile(result)
         })
-    },[])
+    },[userid])
     return (
+        <>
+        {
+        userProfile.user ?
         <div style = {{maxWidth: "1068px", margin:"0px auto"}}>
             <div style = {{
                 display: "flex",
@@ -27,9 +31,10 @@ const Profile = () => {
                 alt = ""
                  /> </div>
             <div>
-                <h4>{myProfile.user? myProfile.user.name: "loading"}</h4>
+                <h4>{userProfile.user.name}</h4>
+                <h5>{userProfile.user.email}</h5>
                     <div style = {{display: "flex", justifyContent: "space-between", width: "108%"}}>
-                        <h6>{myProfile.posts? myProfile.posts.length: "Loading"} Posts</h6>
+                        <h6>{userProfile.posts.length} {userProfile.posts.length === 1? "Post":"Posts"} </h6>
                         <h6>40 Followers</h6>
                         <h6>40 Following</h6>
                     </div>
@@ -37,17 +42,18 @@ const Profile = () => {
             </div>
 
             <div className = "gallery">
-                
-                {myProfile.posts? 
-                    myProfile.posts.map(item => {
+                {
+                    userProfile.posts.map(item => {
                         return (
                             <img key = {item._id} className = "item" src = {item.photo} alt = {item.title}/>
                         )
-                    }): "Loading"
+                    })
                 }
             </div>
         </div>
+       : <h2>loading...!</h2> }
+        </>
     )
 }
 
-export default Profile;
+export default UserProfile;

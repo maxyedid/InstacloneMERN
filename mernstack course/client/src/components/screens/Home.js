@@ -103,7 +103,7 @@ const Home = () => {
                 data.map(item => {
                     return (
                         <div className = "card home-card" key ={item._id}>
-                            <h5>{item.postedBy.name}{item.postedBy._id === state._id && <i onClick = {() => deletePost(item._ID)}
+                            <h5><a href = {item.postedBy._id !== state._id?`/profile/${item.postedBy._id}`: "/profile"}>{item.postedBy.name}</a>{item.postedBy._id === state._id && <i onClick = {() => deletePost(item._ID)}
                             className = "material-icons" 
                             style = {{float: "right"}}>delete</i>}</h5>
                             <div className = "card-image">

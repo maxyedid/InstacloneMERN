@@ -1,6 +1,19 @@
-import React from "react";
+import React, {useEffect, useState, useContext} from "react";
+import {UserContext} from '../../App'
 
 const Profile = () => {
+    const [mypics, setPics] = useState([])
+    const {state, dispatch} = useContext(UserContext)
+    useEffect(()=> {
+        fetch("http://localhost:4000/mypost", {
+            method: "get",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("jwt")
+            }
+        }).then(res => res.json()).then(result => {
+            setPics(result.myData)
+        })
+    },[])
     return (
         <div style = {{maxWidth: "1068px", margin:"0px auto"}}>
             <div style = {{
@@ -15,7 +28,7 @@ const Profile = () => {
                 alt = ""
                  /> </div>
             <div>
-                <h4>Max Yedid</h4>
+                <h4>{state? state.name: "loading"}</h4>
                     <div style = {{display: "flex", justifyContent: "space-between", width: "108%"}}>
                         <h6>40 Posts</h6>
                         <h6>40 Followers</h6>
@@ -25,12 +38,13 @@ const Profile = () => {
             </div>
 
             <div className = "gallery">
-                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
-                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
-                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
-                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
-                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
-                <img className = "item" src = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg" alt = ""/>
+                {
+                    mypics.map(item => {
+                        return (
+                            <img key = {item._id} className = "item" src = {item.photo} alt = {item.title}/>
+                        )
+                    })
+                }
             </div>
         </div>
     )

@@ -11,7 +11,7 @@ const CreatePost = () => {
     const [url, setUrl] = useState("")
     useEffect(() => {
         if (url) {
-            fetch("http://localhost:4000/createPost", {
+            fetch("/createPost", {
             method: "post",
             headers: {
                 "Content-Type": "application/json",

@@ -9,7 +9,6 @@ const PORT = 4000;
 
 app.use(cors());
 
-
 mongoose.connect(MONGOURI);
 
 mongoose.connection.on('connected', () => {

@@ -32,7 +32,7 @@ const Signup = () => {
         })
     }
     const uploadFields = () => {
-        fetch("http://localhost:4000/signup", {
+        fetch("/signup", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"

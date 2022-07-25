@@ -9,7 +9,7 @@ const Profile = () => {
     const {state,dispatch} = useContext(UserContext)
 
     useEffect(()=> {
-        fetch("http://localhost:4000/user/myprofile", {
+        fetch("/user/myprofile", {
             method: "get",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("jwt")

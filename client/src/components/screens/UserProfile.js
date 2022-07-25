@@ -8,7 +8,7 @@ const UserProfile = () => {
     const {state, dispatch} = useContext(UserContext)
     const [showFollow, setShowFollow] = useState(true)
     useEffect(()=> {
-        fetch(`http://localhost:4000/user/${userid}`, {
+        fetch(`/user/${userid}`, {
             method: "get",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
@@ -22,7 +22,7 @@ const UserProfile = () => {
     },[state, userid])
 
     const followUser = () => {
-        fetch("http://localhost:4000/follow", {
+        fetch("/follow", {
             method: "put",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("jwt"),
@@ -46,7 +46,7 @@ const UserProfile = () => {
     }
 
     const unfollowUser = () => {
-        fetch("http://localhost:4000/unfollow", {
+        fetch("/unfollow", {
             method: "put",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("jwt"),

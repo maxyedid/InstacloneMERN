@@ -2,7 +2,6 @@ import React, {useState, useEffect, useContext} from "react";
 import {UserContext} from '../../App'
 
 const Home = () => {
-    let user
     const [data, setData] = useState([])
     const {state} = useContext(UserContext)
     useEffect(() => {
@@ -12,7 +11,6 @@ const Home = () => {
             }
         }).then(res => res.json()).then(result => {
             setData(result.posts)
-            user = result;
         })
     }, [])
 
@@ -145,7 +143,7 @@ const Home = () => {
                 })
             }
         </div>
-: <h5>Please login to your account</h5>}
+: <h5>Please <a style = {{color: "blue"}} href = "/login">login</a> to your account</h5>}
 </>
     )
 }

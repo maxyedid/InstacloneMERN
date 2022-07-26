@@ -5,6 +5,14 @@ const requiredLogin = require('../middleware/requiredLogin')
 const Post = mongoose.model("Post")
 const User = mongoose.model("User")
 
+router.post('/search-users', (req,res) => {
+    let userPattern = new RegExp("^" + req.body.query);
+    User.find({email: {$regex: userPattern}}).select("_id email").then(user => res.json({user}))
+    .catch(err => {
+        console.log(err)
+    })
+})
+
 router.get("/user/myprofile", requiredLogin, (req, res) => {
     User.findOne({_id: req.user._id}).select("-password").then(user => {
         Post.find({postedBy: req.user._id}).populate("postedBy", "_id name").exec((err, posts) => {

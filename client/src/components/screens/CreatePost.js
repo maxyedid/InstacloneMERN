@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import M from "materialize-css";
 import { useHistory } from "react-router-dom";
+import {UserContext} from '../../App'
 
 const CreatePost = () => {
 
@@ -9,6 +10,7 @@ const CreatePost = () => {
     const [body, setBody] = useState("")
     const [image, setImage] = useState("")
     const [url, setUrl] = useState("")
+    const {state} = useContext(UserContext)
     useEffect(() => {
         if (url) {
             fetch("/createPost", {
@@ -51,6 +53,8 @@ const CreatePost = () => {
         })
     }
     return (
+        <>
+        {state ? 
         <div className = "card input-filed" style = {{
             margin: "30px auto",
             maxWidth: "500px",
@@ -73,6 +77,8 @@ const CreatePost = () => {
                     Submit Post
                 </button>
         </div>
+        : <h5>Please login to your account</h5>}
+        </>
     )
 }
 

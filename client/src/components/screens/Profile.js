@@ -93,7 +93,7 @@ const Profile = () => {
                 }
             </div>
         </div>
-        : <h2>Loading...!</h2>} 
+        : state? <h2>Loading</h2> : <h5>Please login to your account</h5>}
         </>
     )
 }

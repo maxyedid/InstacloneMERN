@@ -95,9 +95,9 @@ const UserProfile = () => {
                     </div>
                     {showFollow ?<button style = {{margin: "10px"}} className ="btn waves-effect waves-light #64b5f6 blue darken-1" type="submit" name="action" onClick = {()=>followUser()}>
                     Follow
-                </button>: <button style = {{margin: "10px"}} className = "btn #c62828 red darken-3" type="submit" name="action" onClick = {()=>unfollowUser()}>
+                </button>: state ? <button style = {{margin: "10px"}} className = "btn #c62828 red darken-3" type="submit" name="action" onClick = {()=>unfollowUser()}>
                     Unfollow
-                </button>}
+                </button> : <></>}
                 </div>
             </div>
 

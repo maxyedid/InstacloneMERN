@@ -85,6 +85,8 @@ const SubbedHome = () => {
     }
 
     return (
+        <>
+        {state? 
         <div key = "homepage" className = "home">
             {
                 data.map(item => {
@@ -122,6 +124,8 @@ const SubbedHome = () => {
                 })
             }
         </div>
+        : <h5>Please login to your account</h5>}
+        </>
     )
 }
 

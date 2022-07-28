@@ -94,7 +94,6 @@ router.put('/comment', requiredLogin, (req, res) => {
 
 })
 router.delete('/deletepost/:postId', requiredLogin, (req, res) => {
-    console.log("were here now")
     Post.findOne({_id: req.params.postId}).populate("postedBy", "_id").exec((err,post) => {
         if (err || !post) {
             return res.status(422).json({err: err || "Post can't be found"})

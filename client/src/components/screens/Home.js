@@ -107,7 +107,7 @@ const Home = () => {
                         <div key = {item._id}>
                         {item.postedBy? 
                         <div className = "card home-card">
-                            <h5 style = {{padding: "5px"}}><a href = {item.postedBy._id !== state._id?`/profile/${item.postedBy._id}`: "/profile"}>{item.postedBy.name}</a>{item.postedBy._id === state._id && <i onClick = {() => deletePost(item._ID)}
+                            <h5 style = {{padding: "5px"}}><a href = {item.postedBy._id !== state._id?`/profile/${item.postedBy._id}`: "/profile"}>{item.postedBy.name}</a>{item.postedBy._id === state._id && <i onClick = {() => deletePost(item._id)}
                             className = "material-icons" 
                             style = {{float: "right"}}>delete</i>}</h5>
                             <div className = "card-image">
